@@ -1,7 +1,7 @@
-﻿id,name,city
-1,ACME Packing,San Diego
-2,Bob Johnson,Oceanside
-3,Mary Jones,El Cajon
-4,Rusty Burger,San Diego
-5,Sunrise Flats,La Mesa
-6,Bobby Tables,El Cajon
+﻿name,city
+ACME Packing,San Diego
+Bob Johnson,Oceanside
+Mary Jones,El Cajon
+Rusty Burger,San Diego
+Sunrise Flats,La Mesa
+Bobby Tables,El Cajon
