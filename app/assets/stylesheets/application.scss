@@ -14,7 +14,7 @@
  *= require_self
  */
 
- @import "bulma";
+//  @import "bulma";
  .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -29,3 +29,4 @@
     margin: 2rem;
     font: 12px system-ui;
   }
+

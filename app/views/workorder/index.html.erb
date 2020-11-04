@@ -3,28 +3,12 @@
 <h1>Irisorders</h1>
 
 <div class="grid">
-  <%= @workorders.each do |workorder| %>
+  <%= @workorders.each do |technician| %>
     <div class="grid-template-columns">
-        <span>Workorder Id: <%= workorder.id %></span> 
-        <span>Duration :<%= workorder.duration %> </span> 
-        <span>Price :<%= workorder.price %> </span> 
-        <span>Time:<%= workorder.time %> </span>
-        <span>Location Id: <%= workorder.location_id %></span>
-        <span>Technician Id: <%= workorder.technician_id %></span>
-        <span>Technician Name: <%= workorder.technician.name %></span>
-        <span>Location Name: <%= workorder.location.name %></span>
-       <span>City Name: <%= workorder.location.city %></span>
-
-
+        <span>Technician Name: <%= technician.technician.name %></span>
     </div>
   <% end %>
 </div>
-
-
-
-
-
-
 
 
 <br>
