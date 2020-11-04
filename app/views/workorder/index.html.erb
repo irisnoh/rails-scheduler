@@ -11,7 +11,10 @@
         <span>Time:<%= workorder.time %> </span>
         <span>Location Id: <%= workorder.location_id %></span>
         <span>Technician Id: <%= workorder.technician_id %></span>
-        <span>Technician Name: <%= @Technician %></span>
+        <span>Technician Name: <%= workorder.technician.name %></span>
+        <span>Location Name: <%= workorder.location.name %></span>
+       <span>City Name: <%= workorder.location.city %></span>
+
 
     </div>
   <% end %>
