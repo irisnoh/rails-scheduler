@@ -14,28 +14,6 @@
   </div>
 </section>
 
-
-<section class="section">
-   <div id="calendar"></div>
-</section>
-<script>
-
-  $(function() {
-    var calendarEl = document.getElementById('calendar');
-    var calendar = new Calendar(calendarEl, {
-      header: {
-        left: 'prev,next',
-        right: 'dayGridMonth, listMonth'
-      },
-
-      plugins: [ dayGridPlugin, listPlugin ],
-      defaultView: 'dayGridMonth'
-    });
-
-    calendar.render();
-  });
-</script>
-
 </div>
 <div class="grid">
   <% @technicians.each do |technician| %>
