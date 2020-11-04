@@ -5,21 +5,18 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 
 document.addEventListener('turbolinks:load', function () {
     var calendarEl = document.getElementById('calendar');
-    let calendar = new Calendar(calendarEl, {
-        plugins: [ dayGridPlugin, timeGridPlugin ],
-        initialView: 'timeGridWeek'
-      });
-    // var calendar = new Calendar(calendarEl, {
-       
-    //     plugins: [dayGridPlugin, timeGridPlugin],
-    //     views: {
-    //         timeGridFourDay: {
-    //             type: 'timeGrid',
-    //             duration: { days: 4 },
-    //         }
-    //     },
+    var calendar = new Calendar(calendarEl, {
+        plugins: [dayGridPlugin, timeGridPlugin],
+        views: {
+            timeGridOneDay: {
+                type: 'timeGrid',
+                duration: { days: 1 },
+                buttonText: '1 day'
+            }
+        },
+        initialView: "timeGridOneDay"
+    });
 
-    // });
 
     calendar.render();
 });
