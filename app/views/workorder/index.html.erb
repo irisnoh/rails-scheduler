@@ -1,20 +1,25 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Irisorders</h1>
-<div class="columns">
-  <div class="column">
-    First column
-  </div>
-  <div class="column">
-    Second column
-  </div>
-  <div class="column">
-    Third column
-  </div>
-  <div class="column">
-    Fourth column
-  </div>
+
+<div class="grid">
+  <%= @workorders.each do |workorder| %>
+    <div class="grid-template-columns">
+        <span>Workorder Id: <%= workorder.id %></span> 
+        <span>Duration :<%= workorder.duration %> </span> 
+        <span>Price :<%= workorder.price %> </span> 
+        <span>Time:<%= workorder.time %> </span>
+        <span>Location Id: <%= workorder.location_id %></span>
+        <span>Technician Id: <%= workorder.technician_id %></span>
+        <span>Technician Name: <%= @Technician %></span>
+
+    </div>
+  <% end %>
 </div>
+
+
+
+
 
 
 

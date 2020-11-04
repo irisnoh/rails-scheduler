@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Irisorders</h1>
+<div class="columns is-primary">
+  <%= @technicians.each do |tech| %>
+    <div class="column">
+       <span>Tech Id: <%= tech.id %></span> 
+       <span>Name :<%= tech.name %> </span> 
+
+    </div>
+  <% end %>
+  
+  </div>
+
+
+
+
+<br>
+
