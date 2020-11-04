@@ -5,7 +5,12 @@ application up and running.
 
 Things you may want to cover:
 
+Create db:
 rails db:create
+add in data: bundle exec rake import
+
+Full Calendar:
+yarn add @fullcalendar/core @fullcalendar/daygrid @fullcalendar/list
 
 
 * Ruby version
