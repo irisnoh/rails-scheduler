@@ -25,6 +25,10 @@ Running on:
 * Rails version
 6.0
 
+Front end created using mostly SCSS and CSS and a bit of Bulma and Bootstrap. 
+
+Database is using PostgresSQL. 
+
 4. Start server with
 * Rails s
 
