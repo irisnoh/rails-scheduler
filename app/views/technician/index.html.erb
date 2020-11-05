@@ -129,50 +129,26 @@
   <h2 class="time-slot" style="grid-column: times; grid-row: time-0100;">1:00 pm</h2>
 	<h2 class="time-slot" style="grid-column: times; grid-row: time-0200;">2:00 pm</h2>
 	<h2 class="time-slot" style="grid-column: times; grid-row: time-0300;">3:00 pm</h2>
-	<%# <span class="track-slot" aria-hidden="true" style="grid-column: track-1; grid-row: tracks;"> 
-  ''
-  </span> %>
+  <h2 class="time-slot" style="grid-column: times; grid-row: time-0400;">4:00 pm</h2>
+
+
   <% @technicians.each do |technician| %>
 
 
-  <span class="track-slot" aria-hidden="true" style="grid-row: tracks;"> 
-  <%= technician.name %>
+  <span class="track-slot" aria-hidden="true" style='grid-row: tracks; grid-column: track-<%= technician.id %>'> 
+  <%= technician.name %> <%= technician.id %>
   </span>
   <% technician.workorders.each do |workorder| %>
-	<div class='session session-1 track-1 "(<%= workorder.id %>)"' style='grid-column: track-1; grid-row: time-<%= workorder.time.strftime("%I%M") %> / time-<%= (workorder.time + workorder.duration*60).strftime("%I%M") %>;'>
-		<h3 class="title">Work Order for <%= technician.name %> </h3>
-		<span class="time"><%= workorder.time.strftime("%I:%M%P") %></span>
-		<span class="track">Price: $<%= workorder.price %></span>
-		<span class="author"><%= workorder.location.name %> City: <%= workorder.location.city %> </span>
+	<div class='session session-<%= technician.id %> track-<%= technician.id %> "(<%= workorder.id %>)"' style='grid-column: track-<%= technician.id %>; grid-row: time-<%= workorder.time.strftime("%I%M") %> / time-<%= (workorder.time + workorder.duration*60).strftime("%I%M") %>;'>
+		<div class="title-orders"> <%= workorder.time.strftime("%l:%M%P") %> - <%= (workorder.time + workorder.duration*60).strftime("%l:%M%P") %> <%= technician.name %> </div>
+	Location: <%= workorder.location.name %> in <%= workorder.location.city %> </span>
+  	<span class="track">Price: $<%= workorder.price %></span> <span class="author">
                 Duration:  <%= workorder.duration %> minutes
-              start time  <%= workorder.time.strftime("%I%M") %>
-          End Time<%= (workorder.time + workorder.duration*60).strftime("%I%M") %>
+          
 	</div>
 <%end%>
-	
-	<div class="session session-8 track-1" style="grid-column: track-1-start; grid-row: time-0900 / time-1000;">
-		<h3 class="title">Talk adfafde</h3>
-		<span class="time">10:30 - 11:30</span>
-		<span class="track">Track: 1</span>
-		<span class="author">Mike Rofone</span>
-	</div>
-	
-	<%# <div class="session session-9 track-2" style="grid-column: track-2-start; grid-row: time-1030 / time-1230;">
-		<h3 class="title">Talk Title</h3>
-		<span class="time">10:30 - 12:30</span>
-		<span class="track">Track: 2</span>
-		<span class="author">Mike Rofone</span>
-	</div>
-	
-	<div class="session session-10 track-4" style="grid-column: track-4-start; grid-row: time-1030 / time-1100;">
-		<h3 class="title">Talk Title</h3>
-		<span class="time">10:30 - 11:0</span>
-		<span class="track">Track: 4</span>
-		<span class="author">Mike Rofone</span>
-	</div> %>
-	
 
-	<%end %>
+<%end %>
 
 	
 
