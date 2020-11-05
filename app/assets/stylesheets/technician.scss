@@ -706,18 +706,24 @@ body {
 }
 
 .schedule {
+    padding: 2 rem;
 	grid-gap: 1em;
 	grid-template-rows:
 		[tracks] auto
+		[time-0500] 1fr
+		[time-0600] 1fr
+		[time-0700] 1fr
 		[time-0800] 1fr
-		[time-0830] 1fr
 		[time-0900] 1fr
-		[time-0930] 1fr
 		[time-1000] 1fr
-		[time-1030] 1fr
 		[time-1100] 1fr
-		[time-1130] 1fr
-		[time-1200] 1fr
+        [time-1200] 1fr
+        [time1230] 1fr
+        [time-0100] 1fr
+        [time-0200] 1fr
+
+        [time-0300] 1fr
+
 	 /* Note 1:
 		In this format, gridlines will need to be "named" in 24hr time
 	
@@ -725,12 +731,11 @@ body {
 	*/
 	;
 	grid-template-columns:
-		[times] 4em
-		[track-1-start] 1fr
-		[track-1-end track-2-start] 1fr
-		[track-2-end track-3-start] 1fr
-		[track-3-end track-4-start] 1fr
-		[track-4-end]
+		[times] auto
+		[track-1] 1fr
+		// [track-2-end track-3-start] 1fr
+		// [track-3-end track-4-start] 1fr
+		// [track-4-end]
 	;
 }
 
@@ -769,10 +774,6 @@ hr {
 
 body {
 	counter-reset: session-count;
-}
-.title::before {
-	counter-increment: session-count;
-	content: 'Session #' counter(session-count) ': ';
 }
 
 .track-slot,

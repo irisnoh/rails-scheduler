@@ -8,36 +8,6 @@
 	
 </div>
 
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">MY MODAL</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-<%# <section class="section">
-  <div class="container m-t-20">
-    <div id="calendar"></div>
-  </div>
-</section> %>
 <br />
 <div class="cd-schedule loading">
 	<div class="timeline">
@@ -60,6 +30,31 @@
 		</ul>
 	</div> <!-- .timeline -->
 
+  <!-- Button trigger modal -->
+<div type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Launch demo modal
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">MY MODAL</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 	<div class="events">
     <% @technicians.each do |technician| %>
 	  	<ul class="wrap">
@@ -75,7 +70,29 @@
            Duration:  <%= workorder.duration %> minutes
           End Time<%= (workorder.time + workorder.duration*60).strftime("%I:%M%p") %>
 
+          <!-- Button trigger modal -->
+<div type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+<%= workorder.location.name%></div>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">MY MODAL</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 					<li class="single-event" data-start="<% workorder.time.strftime("%I:%M") %>" data-end="<%= (workorder.time + workorder.duration*60).strftime("%I:%M%p") %>" data-content="event-abs-circuit" data-event="event-1">
@@ -101,77 +118,46 @@
 <br>
 
 <div class="schedule">
-	<% @technicians.each do |technician| %>
+	<h2 class="time-slot" style="grid-column: times; grid-row: time-0500;">5:00am</h2>
+  <h2 class="time-slot" style="grid-column: times; grid-row: time-0600;">6:00am</h2>
+	<h2 class="time-slot" style="grid-column: times; grid-row: time-0700;">7:00 am</h2>
+  <h2 class="time-slot" style="grid-column: times; grid-row: time-0800;">8:00 am</h2>
+	<h2 class="time-slot" style="grid-column: times; grid-row: time-0900;">9:00 am</h2>
+  <h2 class="time-slot" style="grid-column: times; grid-row: time-1000;">10:00 am</h2>
+	<h2 class="time-slot" style="grid-column: times; grid-row: time-1100;">11:00 am</h2>
+	<h2 class="time-slot" style="grid-column: times; grid-row: time-1200;">12:00 pm</h2>
+  <h2 class="time-slot" style="grid-column: times; grid-row: time-0100;">1:00 pm</h2>
+	<h2 class="time-slot" style="grid-column: times; grid-row: time-0200;">2:00 pm</h2>
+	<h2 class="time-slot" style="grid-column: times; grid-row: time-0300;">3:00 pm</h2>
+	<%# <span class="track-slot" aria-hidden="true" style="grid-column: track-1; grid-row: tracks;"> 
+  ''
+  </span> %>
+  <% @technicians.each do |technician| %>
 
-	<span class="track-slot" aria-hidden="true" style="grid-column: track-{<%technician.id%>}; grid-row: tracks;"></span>
-	<span class="track-slot" aria-hidden="true" style="grid-column: track-2; grid-row: tracks;">Track 2</span>
-	<span class="track-slot" aria-hidden="true" style="grid-column: track-3; grid-row: tracks;">Track 3</span>
-	<span class="track-slot" aria-hidden="true" style="grid-column: track-4; grid-row: tracks;">Track 4</span>
-<%end %>
-	<h2 class="time-slot" style="grid-column: times; grid-row: time-0800;">8:00am</h2>
 
-	<div class="session session-1 track-1" style="grid-column: track-1; grid-row: time-0800 / time-0900;">
-		<h3 class="title">Talk Title</h3>
-		<span class="time">8:00 - 9:00</span>
-		<span class="track">Track: 1</span>
-		<span class="author">Mike Rofone</span>
+  <span class="track-slot" aria-hidden="true" style="grid-row: tracks;"> 
+  <%= technician.name %>
+  </span>
+  <% technician.workorders.each do |workorder| %>
+	<div class='session session-1 track-1 "(<%= workorder.id %>)"' style='grid-column: track-1; grid-row: time-<%= workorder.time.strftime("%I%M") %> / time-<%= (workorder.time + workorder.duration*60).strftime("%I%M") %>;'>
+		<h3 class="title">Work Order for <%= technician.name %> </h3>
+		<span class="time"><%= workorder.time.strftime("%I:%M%P") %></span>
+		<span class="track">Price: $<%= workorder.price %></span>
+		<span class="author"><%= workorder.location.name %> City: <%= workorder.location.city %> </span>
+                Duration:  <%= workorder.duration %> minutes
+              start time  <%= workorder.time.strftime("%I%M") %>
+          End Time<%= (workorder.time + workorder.duration*60).strftime("%I%M") %>
 	</div>
+<%end%>
 	
-	<div class="session session-2 track-2" style="grid-column: track-2-start; grid-row: time-0800 / time-0900;">
-		<h3 class="title">Talk Title</h3>
-		<span class="time">8:00 - 9:00</span>
-		<span class="track">Track: 2</span>
-		<span class="author">Mike Rofone</span>
-	</div>	
-	
-	<div class="session session-3 track-3" style="grid-column: track-3-start; grid-row: time-0800 / time-0830;">
-		<h3 class="title">Talk Title</h3>
-		<span class="time">8:00 - 8:30</span>
-		<span class="track">Track: 3</span>
-		<span class="author">Mike Rofone</span>
-	</div>
-	
-	<div class="session session-4 track-4" style="grid-column: track-4-start; grid-row: time-0800 / time-1000;">
-		<h3 class="title">Talk Title</h3>
-		<span class="time">8:00 - 10:00</span>
-		<span class="track">Track: 2</span>
-		<span class="author">Mike Rofone</span>
-	</div>
-	
-	<h2 class="time-slot" style="grid-column: times; grid-row: time-0830;">8:30am</h2>
-	
-	<div class="session session-5 track-3" style="grid-column: track-3-start; grid-row: time-0830 / time-1000;">
-		<h3 class="title">Talk Title</h3>
-		<span class="time">8:30 - 10:00</span>
-		<span class="track">Track: 1</span>
-		<span class="author">Mike Rofone</span>
-	</div>
-	
-	<h2 class="time-slot" style="grid-column: times; grid-row: time-0900;">9:00am</h2>
-	
-	<div class="session session-6 track-1" style="grid-column: track-1-start / track-2-end; grid-row: time-0900 / time-1000;">
-		<h3 class="title">Talk Title</h3>
-		<span class="time">9:00 - 10:00</span>
-		<span class="track">Track: 1</span>
-		<span class="author">Mike Rofone</span>
-	</div>
-	
-	<h2 class="time-slot" style="grid-column: times; grid-row: time-1000;">10:00am</h2>
-	
-	<div class="session session-7 track-many" style="grid-column: track-1-start / track-4-end; grid-row: time-1000 / time-1030;">
-		<h3 class="title">Take a break!</h3>
-	</div>
-	
-	<h2 class="time-slot" style="grid-column: times; grid-row: time-1030;">10:30am</h2>
-	
-	<div class="session session-8 track-1" style="grid-column: track-1-start; grid-row: time-1030 / time-1130;">
-		<h3 class="title">Talk Title</h3>
+	<div class="session session-8 track-1" style="grid-column: track-1-start; grid-row: time-0900 / time-1000;">
+		<h3 class="title">Talk adfafde</h3>
 		<span class="time">10:30 - 11:30</span>
 		<span class="track">Track: 1</span>
 		<span class="author">Mike Rofone</span>
 	</div>
 	
-	<div class="session session-9 track-2" style="grid-column: track-2-start; grid-row: time-1030 / time-1230;">
+	<%# <div class="session session-9 track-2" style="grid-column: track-2-start; grid-row: time-1030 / time-1230;">
 		<h3 class="title">Talk Title</h3>
 		<span class="time">10:30 - 12:30</span>
 		<span class="track">Track: 2</span>
@@ -183,26 +169,13 @@
 		<span class="time">10:30 - 11:0</span>
 		<span class="track">Track: 4</span>
 		<span class="author">Mike Rofone</span>
-	</div>
+	</div> %>
 	
-	<h2 class="time-slot" style="grid-column: times; grid-row: time-1100;">11:00am</h2>
+
+	<%end %>
+
 	
-	<div class="session session-11 track-3" style="grid-column: track-3-start; grid-row: time-1100 / time-1130;">
-		<h3 class="title">Talk Title</h3>
-		<span class="time">11:00 - 11:30</span>
-		<span class="track">Track: 3</span>
-		<span class="author">Mike Rofone</span>
-	</div>
-	
-	<h2 class="time-slot" style="grid-column: times; grid-row: time-1130;">11:30am</h2>
-	
-	<div class="session track-1 track-many" style="grid-column: track-1-start; grid-row: time-1130 / time-1230;">
-		<h3 class="title">Lunch!</h3>
-	</div>
-	
-		<div class="session track-3 track-4 track-many" style="grid-column: track-3-start / track-4-end; grid-row: time-1130 / time-1230;">
-		<h3 class="title">Lunch!</h3>
-	</div>
+
 
 </div>
 
