@@ -4,13 +4,20 @@
  * LAYOUT
  *************************/
  body {
+    width: 100%;
+    min-width:600px;
 	padding: 50px;
 	counter-reset: session;
-	max-width: 1100px;
-	margin: 0 auto;
-	line-height: 1.5;
+	max-width: 1400px;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    min-height: 1000px;
+    align-content: center;
 }
-
+.wrap {
+    margin-left: 5rem;
+}
 .track-slot {
 	display: none;
 }
@@ -19,9 +26,9 @@
 }
 
 @supports( display:grid ) {
-	@media screen and (min-width:700px) {
+	@media screen and (min-width:800px) {
 		.schedule {
-			display: grid;
+            display: grid;
 		}
 
 		/* a background for the sticky tracks */
@@ -103,7 +110,9 @@
 		[track-4-end]
 	;
 }
-
+// .schedule > div {
+//     width: 250px;
+// }
 .schedule:hover > div {
     opacity: 0.5;
 }
@@ -171,9 +180,17 @@ span {
 
 .track-4 {
 	background-color: #c35500;
-	color: #fff;
+    color: #fff;
+}
+.workorder-0115 {
+    width: 175px;
+    margin-left: 12rem;
+}
+.workorder-1230 {
+    width: 175px;
 }
 
+.track-4
 .track-many {
 	display: flex;
 	justify-content: center;

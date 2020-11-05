@@ -1,3 +1,4 @@
+<div class="wrap">
 <p id="notice"><%= notice %></p>
 
 <div class="text">
@@ -27,7 +28,7 @@
       <%= technician.name %>
   </span>
   <% technician.workorders.each do |workorder| %>
-	  <div class='session session-<%= technician.id %> track-<%= technician.id %>' style='grid-column: track-<%= technician.id %>; grid-row: time-<%= workorder.time.strftime("%I%M") %> / time-<%= (workorder.time + workorder.duration*60).strftime("%I%M") %>;'>
+	  <div class='session session-<%= technician.id %> track-<%= technician.id %> workorder-<%= workorder.time.strftime("%I%M") %>' style='grid-column: track-<%= technician.id %>; grid-row: time-<%= workorder.time.strftime("%I%M") %> / time-<%= (workorder.time + workorder.duration*60).strftime("%I%M") %>;'>
       <div class="title-orders"> <%= workorder.time.strftime("%l:%M%P") %> - <%= (workorder.time + workorder.duration*60).strftime("%l:%M%P") %> </div>
       Location: <%= workorder.location.name %> in <%= workorder.location.city %>
       <span class="track">Price: $<%= workorder.price %></span> 
@@ -66,4 +67,4 @@
 </div>
 
 
-
+ </div>
