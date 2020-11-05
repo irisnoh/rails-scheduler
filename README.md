@@ -2,9 +2,9 @@
 
 ## Set-up and Installing
 
-1. Download repo
+1. Download or git clone repo
 
-2. Copy and paste bootstrap and bulma gem into Gemfile:
+2. Copy and paste bootstrap and bulma gem into Gemfile if not in there already:
 
 - gem 'bootstrap', '~> 5.0.0.alpha1'
 - gem "bulma-rails", "~> 0.9.0"
