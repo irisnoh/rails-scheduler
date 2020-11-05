@@ -8,29 +8,177 @@
 	
 </div>
 
-<section class="section">
+<%# <section class="section">
   <div class="container m-t-20">
     <div id="calendar"></div>
   </div>
-</section>
+</section> %>
+<br />
+<div class="cd-schedule loading">
+	<div class="timeline">
+		<ul>
+    	<li><span>5:00 am </span></li>
+			<li><span>6:00 am </span></li>
+			<li><span>7:00 am </span></li>
+			<li><span>8:00 am </span></li>
+			<li><span>09:00 am </span></li>
+			<li><span>10:00 am </span></li>
+			<li><span>11:00 am </span></li>
+			<li><span>12:00 pm </span></li>
+			<li><span>1:00 pm </span></li>
+			<li><span>2:00 pm </span></li>
+			<li><span>3:00 pm </span></li>
+			<li><span>4:00 pm </span></li>
+			<li><span>5:00 pm </span></li>
+			<li><span>6:00 pm </span></li>
+			
+		</ul>
+	</div> <!-- .timeline -->
+
+	<div class="events">
+    <% @technicians.each do |technician| %>
+	  	<ul class="wrap">
+			  <li class="events-group">
+				  <div class="top-info"><span> <%= technician.name %></span></div>
+		      <ul> 
+           <% technician.workorders.each do |workorder| %>
+           Start Time: <%= workorder.time.strftime("%I:%M%P") %>
+           Location: <%= workorder.location.name %>
+           City: <%= workorder.location.city %>
+           Price:  $<%= workorder.price %>
+           Duration:  <%= workorder.duration %> minutes
+          End Time<%= (workorder.time + workorder.duration*60).strftime("%I:%M%p") %>
+
+
+
+
+					<li class="single-event" data-start="<% workorder.time.strftime("%I:%M") %>" data-end="<%= (workorder.time + workorder.duration*60).strftime("%I:%M%p") %>" data-content="event-abs-circuit" data-event="event-1">
+
+					</li>
+          <% end %>
+
+				</ul>
+			</li>
+
+			
+			</li>
+    <%end%>
+
+<!--        -->
+		</ul>
+	</div>
 
 </div>
-<div class="grid">
-  <% @technicians.each do |technician| %>
-    <div class="grid-template-columns">
-        <h1> <%= technician.name %> </h1>
-          <% technician.workorders.each do |workorder| %>
-            <h2>Work Order Details </h2>
-            <div><strong>TIME: </strong> <%= workorder.time %></div>
-            <div><strong>PRICE: </strong> <%= workorder.price %></div>
-            <div><strong>DURATION: </strong> <%= workorder.duration %></div>
-            <div><strong>LOCATION: </strong> <%= workorder.location.name %></div>
-            <div><strong>LOCATION CITY: </strong> <%= workorder.location.city %></div>
-          <% end %>
-     </div>
-  <% end %>
-</div>
+
 
 
 <br>
+
+<div class="schedule">
+	<% @technicians.each do |technician| %>
+
+	<span class="track-slot" aria-hidden="true" style="grid-column: track-{<%technician.id%>}; grid-row: tracks;"></span>
+	<span class="track-slot" aria-hidden="true" style="grid-column: track-2; grid-row: tracks;">Track 2</span>
+	<span class="track-slot" aria-hidden="true" style="grid-column: track-3; grid-row: tracks;">Track 3</span>
+	<span class="track-slot" aria-hidden="true" style="grid-column: track-4; grid-row: tracks;">Track 4</span>
+<%end %>
+	<h2 class="time-slot" style="grid-column: times; grid-row: time-0800;">8:00am</h2>
+
+	<div class="session session-1 track-1" style="grid-column: track-1; grid-row: time-0800 / time-0900;">
+		<h3 class="title">Talk Title</h3>
+		<span class="time">8:00 - 9:00</span>
+		<span class="track">Track: 1</span>
+		<span class="author">Mike Rofone</span>
+	</div>
+	
+	<div class="session session-2 track-2" style="grid-column: track-2-start; grid-row: time-0800 / time-0900;">
+		<h3 class="title">Talk Title</h3>
+		<span class="time">8:00 - 9:00</span>
+		<span class="track">Track: 2</span>
+		<span class="author">Mike Rofone</span>
+	</div>	
+	
+	<div class="session session-3 track-3" style="grid-column: track-3-start; grid-row: time-0800 / time-0830;">
+		<h3 class="title">Talk Title</h3>
+		<span class="time">8:00 - 8:30</span>
+		<span class="track">Track: 3</span>
+		<span class="author">Mike Rofone</span>
+	</div>
+	
+	<div class="session session-4 track-4" style="grid-column: track-4-start; grid-row: time-0800 / time-1000;">
+		<h3 class="title">Talk Title</h3>
+		<span class="time">8:00 - 10:00</span>
+		<span class="track">Track: 2</span>
+		<span class="author">Mike Rofone</span>
+	</div>
+	
+	<h2 class="time-slot" style="grid-column: times; grid-row: time-0830;">8:30am</h2>
+	
+	<div class="session session-5 track-3" style="grid-column: track-3-start; grid-row: time-0830 / time-1000;">
+		<h3 class="title">Talk Title</h3>
+		<span class="time">8:30 - 10:00</span>
+		<span class="track">Track: 1</span>
+		<span class="author">Mike Rofone</span>
+	</div>
+	
+	<h2 class="time-slot" style="grid-column: times; grid-row: time-0900;">9:00am</h2>
+	
+	<div class="session session-6 track-1" style="grid-column: track-1-start / track-2-end; grid-row: time-0900 / time-1000;">
+		<h3 class="title">Talk Title</h3>
+		<span class="time">9:00 - 10:00</span>
+		<span class="track">Track: 1</span>
+		<span class="author">Mike Rofone</span>
+	</div>
+	
+	<h2 class="time-slot" style="grid-column: times; grid-row: time-1000;">10:00am</h2>
+	
+	<div class="session session-7 track-many" style="grid-column: track-1-start / track-4-end; grid-row: time-1000 / time-1030;">
+		<h3 class="title">Take a break!</h3>
+	</div>
+	
+	<h2 class="time-slot" style="grid-column: times; grid-row: time-1030;">10:30am</h2>
+	
+	<div class="session session-8 track-1" style="grid-column: track-1-start; grid-row: time-1030 / time-1130;">
+		<h3 class="title">Talk Title</h3>
+		<span class="time">10:30 - 11:30</span>
+		<span class="track">Track: 1</span>
+		<span class="author">Mike Rofone</span>
+	</div>
+	
+	<div class="session session-9 track-2" style="grid-column: track-2-start; grid-row: time-1030 / time-1230;">
+		<h3 class="title">Talk Title</h3>
+		<span class="time">10:30 - 12:30</span>
+		<span class="track">Track: 2</span>
+		<span class="author">Mike Rofone</span>
+	</div>
+	
+	<div class="session session-10 track-4" style="grid-column: track-4-start; grid-row: time-1030 / time-1100;">
+		<h3 class="title">Talk Title</h3>
+		<span class="time">10:30 - 11:0</span>
+		<span class="track">Track: 4</span>
+		<span class="author">Mike Rofone</span>
+	</div>
+	
+	<h2 class="time-slot" style="grid-column: times; grid-row: time-1100;">11:00am</h2>
+	
+	<div class="session session-11 track-3" style="grid-column: track-3-start; grid-row: time-1100 / time-1130;">
+		<h3 class="title">Talk Title</h3>
+		<span class="time">11:00 - 11:30</span>
+		<span class="track">Track: 3</span>
+		<span class="author">Mike Rofone</span>
+	</div>
+	
+	<h2 class="time-slot" style="grid-column: times; grid-row: time-1130;">11:30am</h2>
+	
+	<div class="session track-1 track-many" style="grid-column: track-1-start; grid-row: time-1130 / time-1230;">
+		<h3 class="title">Lunch!</h3>
+	</div>
+	
+		<div class="session track-3 track-4 track-many" style="grid-column: track-3-start / track-4-end; grid-row: time-1130 / time-1230;">
+		<h3 class="title">Lunch!</h3>
+	</div>
+
+</div>
+
+
 
