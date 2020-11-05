@@ -1,123 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <div class="text">
-	
 	<h1>Rails Scheduler</h1>
-	
 	<hr>
-	
 </div>
-
 <br />
-<div class="cd-schedule loading">
-	<div class="timeline">
-		<ul>
-    	<li><span>5:00 am </span></li>
-			<li><span>6:00 am </span></li>
-			<li><span>7:00 am </span></li>
-			<li><span>8:00 am </span></li>
-			<li><span>09:00 am </span></li>
-			<li><span>10:00 am </span></li>
-			<li><span>11:00 am </span></li>
-			<li><span>12:00 pm </span></li>
-			<li><span>1:00 pm </span></li>
-			<li><span>2:00 pm </span></li>
-			<li><span>3:00 pm </span></li>
-			<li><span>4:00 pm </span></li>
-			<li><span>5:00 pm </span></li>
-			<li><span>6:00 pm </span></li>
-			
-		</ul>
-	</div> <!-- .timeline -->
-
-  <!-- Button trigger modal -->
-<div type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-  Launch demo modal
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">MY MODAL</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-	<div class="events">
-    <% @technicians.each do |technician| %>
-	  	<ul class="wrap">
-			  <li class="events-group">
-				  <div class="top-info"><span> <%= technician.name %></span></div>
-		      <ul> 
-          <li data-toggle="modal" data-target="#exampleModalCenter"> </li>
-           <% technician.workorders.each do |workorder| %>
-           Start Time: <%= workorder.time.strftime("%I:%M%P") %>
-           Location: <%= workorder.location.name %>
-           City: <%= workorder.location.city %>
-           Price:  $<%= workorder.price %>
-           Duration:  <%= workorder.duration %> minutes
-          End Time<%= (workorder.time + workorder.duration*60).strftime("%I:%M%p") %>
-
-          <!-- Button trigger modal -->
-<div type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-<%= workorder.location.name%></div>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">MY MODAL</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-					<li class="single-event" data-start="<% workorder.time.strftime("%I:%M") %>" data-end="<%= (workorder.time + workorder.duration*60).strftime("%I:%M%p") %>" data-content="event-abs-circuit" data-event="event-1">
-
-					</li>
-          <% end %>
-
-				</ul>
-			</li>
-
-			
-			</li>
-    <%end%>
-
-<!--        -->
-		</ul>
-	</div>
-
-</div>
-
-
-
 <br>
 
-<div class="schedule">
+<div class="schedule" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
 	<h2 class="time-slot" style="grid-column: times; grid-row: time-0500;">5:00am</h2>
   <h2 class="time-slot" style="grid-column: times; grid-row: time-0600;">6:00am</h2>
 	<h2 class="time-slot" style="grid-column: times; grid-row: time-0700;">7:00 am</h2>
@@ -133,19 +23,39 @@
 
 
   <% @technicians.each do |technician| %>
-
-
-  <span class="track-slot" aria-hidden="true" style='grid-row: tracks; grid-column: track-<%= technician.id %>'> 
-  <%= technician.name %> <%= technician.id %>
+    <span class="track-slot" aria-hidden="true" style='grid-row: tracks; grid-column: track-<%= technician.id %>'> 
+      <%= technician.name %>
   </span>
   <% technician.workorders.each do |workorder| %>
-	<div class='session session-<%= technician.id %> track-<%= technician.id %> "(<%= workorder.id %>)"' style='grid-column: track-<%= technician.id %>; grid-row: time-<%= workorder.time.strftime("%I%M") %> / time-<%= (workorder.time + workorder.duration*60).strftime("%I%M") %>;'>
-		<div class="title-orders"> <%= workorder.time.strftime("%l:%M%P") %> - <%= (workorder.time + workorder.duration*60).strftime("%l:%M%P") %> <%= technician.name %> </div>
-	Location: <%= workorder.location.name %> in <%= workorder.location.city %> </span>
-  	<span class="track">Price: $<%= workorder.price %></span> <span class="author">
-                Duration:  <%= workorder.duration %> minutes
-          
-	</div>
+	  <div class='session session-<%= technician.id %> track-<%= technician.id %>' style='grid-column: track-<%= technician.id %>; grid-row: time-<%= workorder.time.strftime("%I%M") %> / time-<%= (workorder.time + workorder.duration*60).strftime("%I%M") %>;'>
+      <div class="title-orders"> <%= workorder.time.strftime("%l:%M%P") %> - <%= (workorder.time + workorder.duration*60).strftime("%l:%M%P") %> </div>
+      Location: <%= workorder.location.name %> in <%= workorder.location.city %>
+      <span class="track">Price: $<%= workorder.price %></span> 
+      
+	  </div>
+ 
+
+  <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">MY MODAL</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Next Appointment is:
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+ 
 <%end%>
 
 <%end %>
